@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 //import TaskDetails from './TaskDetails'; // Assuming you have a TaskDetails component
@@ -12,26 +12,23 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <Routes>
-      <div>
+    <div>
+      <Router>
+        <Routes>
           {/* Route for displaying the task list */}
-          <Route exact path="/">
-            <TaskList tasks={tasks} />
-          </Route>
+          {/* <Route path='/' element={<SignUp />} /> */}
+          <Route path="/" element={<TaskList tasks={tasks}/>} />
 
           {/* Route for adding a new task */}
-          <Route path="/add-task">
-            <TaskForm addTask={addTask} />
-          </Route>
+          <Route path="/add-task" element={<TaskForm addTask={addTask} />}/>
 
           {/* Route for displaying task details */}
           {/* <Route path="/task/:id">
             <TaskDetails tasks={tasks} />
           </Route> */}
-      </div>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
